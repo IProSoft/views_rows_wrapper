@@ -59,7 +59,7 @@ class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
       '#description' => t('Select attribute type.'),
     );
     $form['attribute_name'] = array(
-      '#title' => t('Class/Span attribute name(s)'),
+      '#title' => t('Class/ID attribute name(s)'),
       '#type' => 'textfield',
       '#default_value' => $this->options['attribute_name'],
     );
