@@ -23,4 +23,3 @@ function views_rows_wrapper_views_plugins() {
     ),
   );
 }
-

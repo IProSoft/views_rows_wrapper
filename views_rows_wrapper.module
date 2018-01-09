@@ -38,7 +38,7 @@ function template_preprocess_views_rows_wrapper(&$vars) {
   $attribute_type = strtolower($attribute_type);
   $attribute_name = isset($options['attribute_name']) ? $options['attribute_name'] : '';
   $attribute_name = preg_replace('/[^a-zA-Z0-9-_\s]/','',$attribute_name);
-  $rows_number = isset($options['rows_number']) ? $options['rows_number'] : 2;
+  $rows_number = isset($options['rows_number']) ? $options['rows_number'] + 1 : 2;
   $wrap_method = isset($options['wrap_method']) ? $options['wrap_method'] : 1;
   $default_rows = isset($options['default_rows']) ? $options['default_rows'] : FALSE;
   $strip_rows = isset($options['strip_rows']) ? $options['strip_rows'] : FALSE;

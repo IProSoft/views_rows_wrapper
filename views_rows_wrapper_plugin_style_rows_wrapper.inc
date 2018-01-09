@@ -39,7 +39,7 @@ class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
 
     $form['use_wrapper'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Use this row wrapper'),
+      '#title' => t('Use this rows wrapper'),
       '#default_value' => $this->options['use_wrapper'],
       '#description' => t('Check if you want to use this plugin.'),
     );
@@ -65,8 +65,8 @@ class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
     );
     $rows_num = array( 0 => t('Each'));
     $k=1;
-    while ($k<=50) {
-      $rows_num[$k]=$k;
+    while ($k<50) {
+      $rows_num[$k]=$k+1;
       $k++;
     }
     $form['rows_number'] = array(

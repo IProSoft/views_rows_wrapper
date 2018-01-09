@@ -1,6 +1,7 @@
 name = Views Rows Wrapper
-description = The view style plugin, that combines a user defined number of rows
-              into sets, wrapped by chosen elements and attributes.
-version = 7.x-1.0
+description = The view style plugin, that combines result rows into sets, wrapped by HTML element and attribute.
+version = 7.x-1.2
+package = Views
 core = 7.x
 files[] = views_rows_wrapper_plugin_style_rows_wrapper.inc
+dependencies[] = views
