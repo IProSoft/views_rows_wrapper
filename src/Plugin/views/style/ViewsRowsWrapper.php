@@ -42,9 +42,9 @@ class ViewsRowsWrapper extends StylePluginBase {
     $options = parent::defineOptions();
     $options['use_wrapper'] = ['default' => TRUE];
     $options['element_type'] = ['default' => 0];
-    $options['element_types'] = ['default' => ViewsRowsWrapperTypes::element_types()];
+    $options['element_types'] = ['default' => ViewsRowsWrapperTypes::elementTypes()];
     $options['attribute_type'] = ['default' => 0];
-    $options['attribute_types'] = ['default' => ViewsRowsWrapperTypes::attribute_types()];
+    $options['attribute_types'] = ['default' => ViewsRowsWrapperTypes::attributeTypes()];
     $options['attribute_name'] = ['default' => ''];
     $options['rows_number'] = ['default' => 2];
     $options['wrap_method'] = ['default' => 0];
@@ -114,4 +114,5 @@ class ViewsRowsWrapper extends StylePluginBase {
       '#description' => $this->t('Add css classes to the first and last line, as well as odd/even classes for striping.'),
     ];
   }
+
 }

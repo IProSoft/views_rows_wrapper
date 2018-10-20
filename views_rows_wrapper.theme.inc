@@ -17,8 +17,8 @@ function template_preprocess_views_rows_wrapper(&$variables) {
   $rows = $variables['rows'];
   $style = $view->style_plugin;
   $options = $style->options;
-  $element_types = ViewsRowsWrapperTypes::element_types();
-  $attribute_types = ViewsRowsWrapperTypes::attribute_types();
+  $element_types = ViewsRowsWrapperTypes::elementTypes();
+  $attribute_types = ViewsRowsWrapperTypes::attributeTypes();
   $variables['use_wrapper'] = !empty($options['use_wrapper']);
   $element_type = isset($options['element_type']) ? $element_types[$options['element_type']] : $element_types[0];
   $variables['element_type'] = strtolower($element_type);
