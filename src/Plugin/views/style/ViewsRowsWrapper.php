@@ -40,16 +40,16 @@ class ViewsRowsWrapper extends StylePluginBase {
    */
   protected function defineOptions() {
     $options = parent::defineOptions();
-    $options['use_wrapper'] = array('default' => TRUE);
-    $options['element_type'] = array('default' => 0);
-    $options['element_types'] = array('default' => ViewsRowsWrapperTypes::element_types());
-    $options['attribute_type'] = array('default' => 0);
-    $options['attribute_types'] = array('default' => ViewsRowsWrapperTypes::attribute_types());
-    $options['attribute_name'] = array('default' => '');
-    $options['rows_number'] = array('default' => 2);
-    $options['wrap_method'] = array('default' => 0);
-    $options['default_rows'] = array('default' => FALSE);
-    $options['strip_rows'] = array('default' => FALSE);
+    $options['use_wrapper'] = ['default' => TRUE];
+    $options['element_type'] = ['default' => 0];
+    $options['element_types'] = ['default' => ViewsRowsWrapperTypes::element_types()];
+    $options['attribute_type'] = ['default' => 0];
+    $options['attribute_types'] = ['default' => ViewsRowsWrapperTypes::attribute_types()];
+    $options['attribute_name'] = ['default' => ''];
+    $options['rows_number'] = ['default' => 2];
+    $options['wrap_method'] = ['default' => 0];
+    $options['default_rows'] = ['default' => FALSE];
+    $options['strip_rows'] = ['default' => FALSE];
     return $options;
   }
 
@@ -59,62 +59,59 @@ class ViewsRowsWrapper extends StylePluginBase {
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
 
-    $form['use_wrapper'] = array(
+    $form['use_wrapper'] = [
       '#type' => 'checkbox',
-      '#title' => t('Use this row wrapper'),
+      '#title' => $this->t('Use this row wrapper'),
       '#default_value' => $this->options['use_wrapper'],
-      '#description' => t('Check if you want to use this plugin.'),
-    );
-    $form['element_type'] = array(
+      '#description' => $this->t('Check if you want to use this plugin.'),
+    ];
+    $form['element_type'] = [
       '#type' => 'select',
-      '#title' => t('Element type'),
-      '#options' =>  $this->options['element_types'],
+      '#title' => $this->t('Element type'),
+      '#options' => $this->options['element_types'],
       '#default_value' => $this->options['element_type'],
-      '#description' => t('Select element type.'),
-    );
-    $form['attribute_type'] = array(
+      '#description' => $this->t('Select element type.'),
+    ];
+    $form['attribute_type'] = [
       '#type' => 'select',
-      '#title' => t('Attribute type'),
+      '#title' => $this->t('Attribute type'),
       '#options' => $this->options['attribute_types'],
       '#default_value' => $this->options['attribute_type'],
-      '#description' => t('Select attribute type.'),
-    );
-    $form['attribute_name'] = array(
-      '#title' => t('Class/ID attribute name(s)'),
+      '#description' => $this->t('Select attribute type.'),
+    ];
+    $form['attribute_name'] = [
+      '#title' => $this->t('Class/ID attribute name(s)'),
       '#type' => 'textfield',
       '#default_value' => $this->options['attribute_name'],
-    );
-    $rows_num = array( 0 => t('Each'));
-    $k=1;
-    while ($k<50) {
-      $rows_num[$k]=$k+1;
-      $k++;
-    }
-    $form['rows_number'] = array(
-      '#type' => 'select',
-      '#title' => t('Number of rows to wrap'),
-      '#options' => $rows_num,
+    ];
+    $form['rows_number'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Number of rows to wrap'),
+      '#min' => 1,
       '#default_value' => $this->options['rows_number'],
-      '#description' => t('Choose the number of rows to be wrapped by selected element.'),
-    );
-    $form['wrap_method'] = array(
+      '#description' => $this->t('Choose the number of rows to be wrapped by selected element.'),
+    ];
+    $form['wrap_method'] = [
       '#type' => 'radios',
-      '#title' => t('Wrap method'),
+      '#title' => $this->t('Wrap method'),
       '#default_value' => $this->options['wrap_method'],
-      '#options' => array(0 => t('Apply to all items'), 1 => t('Wrap once (first rows only)')),
-      '#description' => t('Select the method of how you want to wrap your view results.'),
-    );
-    $form['default_rows'] = array(
+      '#options' => [
+        0 => $this->t('Apply to all items'),
+        1 => $this->t('Wrap once (first rows only)'),
+      ],
+      '#description' => $this->t('Select the method of how you want to wrap your view results.'),
+    ];
+    $form['default_rows'] = [
       '#type' => 'checkbox',
-      '#title' => t('Add views row classes'),
+      '#title' => $this->t('Add views row classes'),
       '#default_value' => $this->options['default_rows'],
-      '#description' => t('Add the default row classes like views-row-1 to the output. You can use this to quickly reduce the amount of markup the view provides by default, at the cost of making it more difficult to apply CSS.'),
-    );
-    $form['strip_rows'] = array(
+      '#description' => $this->t('Add the default row classes like views-row-1 to the output. You can use this to quickly reduce the amount of markup the view provides by default, at the cost of making it more difficult to apply CSS.'),
+    ];
+    $form['strip_rows'] = [
       '#type' => 'checkbox',
-      '#title' => t('Add striping (odd/even), first/last row classes'),
+      '#title' => $this->t('Add striping (odd/even), first/last row classes'),
       '#default_value' => $this->options['strip_rows'],
-      '#description' => t('Add css classes to the first and last line, as well as odd/even classes for striping.'),
-    );
+      '#description' => $this->t('Add css classes to the first and last line, as well as odd/even classes for striping.'),
+    ];
   }
 }

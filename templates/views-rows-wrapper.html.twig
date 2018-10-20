@@ -18,46 +18,43 @@
  * @ingroup themeable
  */
 #}
-    {% if use_wrapper %}
-    <div class="views-rows-wrapper">
-        {% set k = 0 %}
-        {% set is_wrapped_once = 0 %}
-{% for row in rows %}
-        {% set k = k + 1  %}
-
-        {% if (k == 1) and (is_wrapped_once == 0) %}
-            {% if attribute_name %}
-                <{{ element_type }} {{ attribute_type }} ="{{ attribute_name }}">
-            {% else %}
-                <{{ element_type }}>
-            {% endif %}
-            <div{{ row.attributes }}>
-                {{ row.content }}
-            </div>
-        {% else %}
-            <div{{ row.attributes }}>
-                {{ row.content }}
-            </div>
-        {% endif %}
-
-        {% if (loop.index is divisible by(rows_number)) or ((loop.index == loop.last) and (k < rows_number)) %}
-            {% if is_wrapped_once == 0 %}
-            </{{ element_type }}>
-                {% endif %}
-        {% endif %}
-
-    {% if (k == rows_number) %}
-        {% set k = 0 %}
-        {% if (wrap_method == 1) %}
-            {% set is_wrapped_once = 1 %}
-        {% endif %}
-    {% endif %}
-{% endfor %}
-    </div>
+{% if use_wrapper %}
+  <div class="views-rows-wrapper">
+  {% set k = 0 %}
+  {% set is_wrapped_once = 0 %}
+  {% for row in rows %}
+    {% set k = k + 1 %}
+    {% if (k == 1) and (is_wrapped_once == 0) %}
+      {% if attribute_name %}
+        <{{ element_type }} {{ attribute_type }} ="{{ attribute_name }}">
+      {% else %}
+        <{{ element_type }}>
+      {% endif %}
+      <div{{ row.attributes }}>
+        {{ row.content }}
+      </div>
     {% else %}
-        {% for row in rows %}
-            <div{{ row.attributes }}>
-                {{ row.content }}
-            </div>
-        {% endfor %}
+      <div{{ row.attributes }}>
+        {{ row.content }}
+      </div>
     {% endif %}
+    {% if (loop.index is divisible by(rows_number)) or ((loop.index == loop.last) and (k < rows_number)) %}
+      {% if is_wrapped_once == 0 %}
+        </{{ element_type }}>
+      {% endif %}
+    {% endif %}
+    {% if (k == rows_number) %}
+      {% set k = 0 %}
+      {% if (wrap_method == 1) %}
+        {% set is_wrapped_once = 1 %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  </div>
+{% else %}
+  {% for row in rows %}
+    <div{{ row.attributes }}>
+      {{ row.content }}
+    </div>
+  {% endfor %}
+{% endif %}
