@@ -67,8 +67,8 @@ function template_preprocess_views_rows_wrapper(&$vars) {
   $k = 0;
   $max = count($rows);
   $is_wrapped_once = FALSE;
-  foreach ($rows as $id => $row) {
-    $classes = [];
+  foreach ($rows as $row) {
+    $classes = array();
     $count++;
     $k++;
     if ($default_rows) {

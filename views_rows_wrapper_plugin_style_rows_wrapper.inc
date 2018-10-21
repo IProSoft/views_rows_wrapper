@@ -10,7 +10,6 @@
  *
  * @ingroup views_style_plugins
  */
-
 class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
 
   /**
@@ -45,7 +44,7 @@ class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
     $form['element_type'] = array(
       '#type' => 'select',
       '#title' => t('Element type'),
-      '#options' =>  $element_types,
+      '#options' => $element_types,
       '#default_value' => $this->options['element_type'],
       '#description' => t('Select element type.'),
     );
