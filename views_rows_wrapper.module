@@ -20,21 +20,21 @@ function views_rows_wrapper_help($path) {
 }
 
 /**
- * Returns wrapper element types()
+ * Returns wrapper element types().
  */
 function views_rows_wrapper_element_types() {
   return ["DIV", "SPAN"];
 }
 
 /**
- * Returns wrapper attribute types()
+ * Returns wrapper attribute types().
  */
 function views_rows_wrapper_attribute_types() {
   return ["CLASS", "ID"];
 }
 
 /**
- * Implements hook_views_api()
+ * Implements hook_views_api().
  */
 function views_rows_wrapper_views_api() {
   return ['api' => 3];
