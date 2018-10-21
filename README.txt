@@ -5,7 +5,7 @@ of rows into sets, wrapped by chosen HTML element and attribute.
 
 REQUIREMENTS
 ------------
-Depends on views and views_ui modules.
+Depends on views module.
 
 INSTALLATION
 ------------
