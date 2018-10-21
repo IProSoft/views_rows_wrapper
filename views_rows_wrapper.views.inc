@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Contains views_rows_wrapper plugin settings.
+ */
+
+/**
  * Implementation of hook_views_plugins().
  */
 function views_rows_wrapper_views_plugins() {
@@ -12,7 +17,7 @@ function views_rows_wrapper_views_plugins() {
         'handler' => 'views_rows_wrapper_plugin_style_rows_wrapper',
         'path' => drupal_get_path('module', 'views_rows_wrapper'),
         'theme' => 'views_rows_wrapper',
-        'js' => array(),
+        'js' => [],
         'type' => 'normal',
         'uses row plugin' => TRUE,
         'uses fields' => TRUE,

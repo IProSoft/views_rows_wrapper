@@ -1,28 +1,49 @@
 <?php
 
 /**
+ * @file
+ * Views Rows Wrapper module.
+ */
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function views_rows_wrapper_help($path) {
+  switch ($path) {
+    case "admin/help#views_rows_wrapper":
+      return t("This is simple view display style plugin, that combines user defined number of rows into sets, wrapped by chosen HTML element and attribute.");
+
+    break;
+  }
+}
+
+/**
  * Returns wrapper element types()
  */
 function views_rows_wrapper_element_types() {
-  return array("DIV", "SPAN");
+  return ["DIV", "SPAN"];
 }
 
 /**
  * Returns wrapper attribute types()
  */
 function views_rows_wrapper_attribute_types() {
-  return array("CLASS", "ID");
+  return ["CLASS", "ID"];
 }
 
 /**
  * Implements hook_views_api()
  */
 function views_rows_wrapper_views_api() {
-  return array('api' => 3);
+  return ['api' => 3];
 }
 
 /**
  * Implements hook_preprocess_HOOK() for theme_views_rows_wrapper().
+ *
+ * @inheritdoc
  */
 function template_preprocess_views_rows_wrapper(&$vars) {
   $view = $vars['view'];
@@ -37,19 +58,17 @@ function template_preprocess_views_rows_wrapper(&$vars) {
   $attribute_type = isset($options['attribute_type']) ? $attribute_types[$options['attribute_type']] : $attribute_types[0];
   $attribute_type = strtolower($attribute_type);
   $attribute_name = isset($options['attribute_name']) ? $options['attribute_name'] : '';
-  $attribute_name = preg_replace('/[^a-zA-Z0-9-_\s]/','',$attribute_name);
-  $rows_number = isset($options['rows_number']) ? $options['rows_number'] + 1 : 2;
+  $attribute_name = preg_replace('/[^a-zA-Z0-9-_\s]/', '', $attribute_name);
+  $rows_number = isset($options['rows_number']) ? $options['rows_number'] : 2;
   $wrap_method = isset($options['wrap_method']) ? $options['wrap_method'] : 1;
   $default_rows = isset($options['default_rows']) ? $options['default_rows'] : FALSE;
   $strip_rows = isset($options['strip_rows']) ? $options['strip_rows'] : FALSE;
-
   $count = 0;
-  $k=0;
+  $k = 0;
   $max = count($rows);
   $is_wrapped_once = FALSE;
-
   foreach ($rows as $id => $row) {
-    $classes = array();
+    $classes = [];
     $count++;
     $k++;
     if ($default_rows) {
@@ -67,17 +86,17 @@ function template_preprocess_views_rows_wrapper(&$vars) {
     }
     if (($default_rows) || ($strip_rows)) {
       $class = implode(" ", $classes);
-      $row = '<div class="'.$class.'">'.$row.'</div>';
+      $row = '<div class="' . $class . '">' . $row . '</div>';
     }
-    if(($use_wrapper) && (!$is_wrapped_once)) {
-      if($k == 1) {
+    if (($use_wrapper) && (!$is_wrapped_once)) {
+      if ($k == 1) {
         $row = '<' . $element_type . ' ' . $attribute_type . '="' . $attribute_name . '">' . $row;
       }
       if (($count % $rows_number == 0) || (($count == $max) && ($k < $rows_number))) {
         $row = $row . '</' . $element_type . '>';
       }
     }
-    if($k >= $rows_number) {
+    if ($k >= $rows_number) {
       $k = 0;
       if ($wrap_method == 1) {
         $is_wrapped_once = TRUE;

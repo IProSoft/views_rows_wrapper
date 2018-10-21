@@ -11,21 +11,21 @@
  * @ingroup views_style_plugins
  */
 
-
 class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
+
   /**
    * Overrides views_plugin_style::options_definition().
    */
   function option_definition() {
     $options = parent::option_definition();
-    $options['use_wrapper'] = array('default' => '1');
-    $options['element_type'] = array('default' => '0');
-    $options['attribute_type'] = array('default' => '0');
+    $options['use_wrapper'] = array('default' => 1);
+    $options['element_type'] = array('default' => 0);
+    $options['attribute_type'] = array('default' => 0);
     $options['attribute_name'] = array('default' => '');
-    $options['rows_number'] = array('default' => '2');
-    $options['wrap_method'] = array('default' => '0');
-    $options['default_rows'] = array('default' => '1');
-    $options['strip_rows'] = array('default' => '1');
+    $options['rows_number'] = array('default' => 2);
+    $options['wrap_method'] = array('default' => 0);
+    $options['default_rows'] = array('default' => 1);
+    $options['strip_rows'] = array('default' => 1);
     return $options;
   }
 
@@ -36,14 +36,12 @@ class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
     parent::options_form($form, $form_state);
     $element_types = views_rows_wrapper_element_types();
     $attribute_types = views_rows_wrapper_attribute_types();
-
     $form['use_wrapper'] = array(
       '#type' => 'checkbox',
       '#title' => t('Use this rows wrapper'),
       '#default_value' => $this->options['use_wrapper'],
       '#description' => t('Check if you want to use this plugin.'),
     );
-
     $form['element_type'] = array(
       '#type' => 'select',
       '#title' => t('Element type'),
@@ -63,16 +61,13 @@ class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
       '#type' => 'textfield',
       '#default_value' => $this->options['attribute_name'],
     );
-    $rows_num = array( 0 => t('Each'));
-    $k=1;
-    while ($k<50) {
-      $rows_num[$k]=$k+1;
-      $k++;
-    }
     $form['rows_number'] = array(
-      '#type' => 'select',
       '#title' => t('Number of rows to wrap'),
-      '#options' => $rows_num,
+      '#type' => 'textfield',
+      '#attributes' => array(
+        ' type' => 'number',
+        'min' => 1,
+      ),
       '#default_value' => $this->options['rows_number'],
       '#description' => t('Choose the number of rows to be wrapped by selected element.'),
     );
@@ -96,4 +91,5 @@ class views_rows_wrapper_plugin_style_rows_wrapper extends views_plugin_style {
       '#description' => t('Add css classes to the first and last line, as well as odd/even classes for striping.'),
     );
   }
+
 }
