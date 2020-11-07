@@ -7,13 +7,6 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 
-// Store Views Rows Wrapper preprocess theme functions in a separate .inc file.
-\Drupal::moduleHandler()
-  ->loadInclude('views_rows_wrapper', 'inc', 'views_rows_wrapper.theme');
-// Loads wrapper types settings class.
-\Drupal::moduleHandler()
-  ->loadInclude('views_rows_wrapper', 'inc', 'views_rows_wrapper_types');
-
 /**
  * Implements hook_help().
  */

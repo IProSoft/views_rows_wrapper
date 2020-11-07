@@ -14,12 +14,15 @@
  * - rows_number: A number of rows to wrap
  * - wrap_method: 0 - Apply to all items, 1 - Wrap once.
  * - use_wrapper: A flag for wrapper usage
+ * - use_additional_wrapper: A flag for additional wrapper usage
  *
  * @ingroup themeable
  */
 #}
 {% if use_wrapper %}
-  <div class="views-rows-wrapper">
+  {% if use_additional_wrapper %}
+    <div class="views-rows-wrapper">
+  {% endif %}
   {% set k = 0 %}
   {% set is_wrapped_once = 0 %}
   {% for row in rows %}
@@ -50,7 +53,9 @@
       {% endif %}
     {% endif %}
   {% endfor %}
-  </div>
+  {% if use_additional_wrapper %}
+    </div>
+  {% endif %}
 {% else %}
   {% for row in rows %}
     <div{{ row.attributes }}>

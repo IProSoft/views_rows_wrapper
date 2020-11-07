@@ -1,7 +1,8 @@
 name: Views Rows Wrapper
-type: module
 description: The view style plugin, that combines result rows into sets, wrapped by HTML element and attribute.
+core: 8.x
+core_version_requirement: ^8 || ^9
+type: module
 package: Views
-core: '8.x'
 dependencies:
   - drupal:views

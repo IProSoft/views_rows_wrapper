@@ -41,11 +41,13 @@ class ViewsRowsWrapper extends StylePluginBase {
   protected function defineOptions() {
     $options = parent::defineOptions();
     $options['use_wrapper'] = ['default' => TRUE];
+    $options['use_additional_wrapper'] = ['default' => TRUE];
     $options['element_type'] = ['default' => 0];
     $options['element_types'] = ['default' => ViewsRowsWrapperTypes::elementTypes()];
     $options['attribute_type'] = ['default' => 0];
     $options['attribute_types'] = ['default' => ViewsRowsWrapperTypes::attributeTypes()];
     $options['attribute_name'] = ['default' => ''];
+    $options['original_row_class_name'] = ['default' => ''];
     $options['rows_number'] = ['default' => 2];
     $options['wrap_method'] = ['default' => 0];
     $options['default_rows'] = ['default' => FALSE];
@@ -65,6 +67,20 @@ class ViewsRowsWrapper extends StylePluginBase {
       '#default_value' => $this->options['use_wrapper'],
       '#description' => $this->t('Check if you want to use this plugin.'),
     ];
+    $form['use_additional_wrapper'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Use the additional wrapper'),
+      '#default_value' => $this->options['use_additional_wrapper'],
+      '#description' => $this->t('Check if you want to use the additional (external) wrapper provided by this module.'),
+      '#states' => [
+        'visible' => [
+          ':input[name="style_options[use_wrapper]"]' => ['checked' => TRUE],
+        ],
+        'enabled' => [
+          ':input[name="style_options[use_wrapper]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
     $form['element_type'] = [
       '#type' => 'select',
       '#title' => $this->t('Element type'),
@@ -83,6 +99,11 @@ class ViewsRowsWrapper extends StylePluginBase {
       '#title' => $this->t('Class/ID attribute name(s)'),
       '#type' => 'textfield',
       '#default_value' => $this->options['attribute_name'],
+    ];
+    $form['original_row_class_name'] = [
+      '#title' => $this->t('Original row class name(s)'),
+      '#type' => 'textfield',
+      '#default_value' => $this->options['original_row_class_name'],
     ];
     $form['rows_number'] = [
       '#type' => 'number',
