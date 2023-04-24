@@ -1,7 +1,6 @@
 name: Views Rows Wrapper
 description: The view style plugin, that combines result rows into sets, wrapped by HTML element and attribute.
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 type: module
 package: Views
 dependencies:
