@@ -1,0 +1,7 @@
+{
+    "name": "drupal/views_rows_wrapper",
+    "description": "Views Rows Wrapper",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev"
+}
